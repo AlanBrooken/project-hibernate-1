@@ -1,23 +1,44 @@
 package com.game.entity;
 
+import com.sun.istack.NotNull;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
-
+@Table(name = "player", schema = "rpg")
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    @NotNull
     private String name;
 
+    @Column(name = "title")
+    @NotNull
     private String title;
 
+    @Column(name = "race")
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
     private Race race;
 
+    @Column(name = "profession")
+    @Enumerated(EnumType.ORDINAL)
+    @NotNull
     private Profession profession;
 
+    @Column(name = "birthday")
+    @NotNull
     private Date birthday;
 
+    @Column(name = "banned")
+    @NotNull
     private Boolean banned;
 
+    @Column(name = "level")
+    @NotNull
     private Integer level;
 
     public Player() {
